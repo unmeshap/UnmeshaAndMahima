@@ -1,0 +1,21 @@
+CC = gcc
+WARNING_FLAGS = -Wall -Wextra
+EXE = 537Project
+
+all: main.o optionsProcessing.o ProcList.o parser.o
+	$(CC) -o $(EXE) main.o optionsProcessing.o ProcList.o parser.o
+
+main.o: main.c optionsProcessing.h ProcList.h parser.h
+	$(CC) $(WARNING_FLAGS) -c main.c
+
+optionsProcessing.o: optionsProcessing.c optionsProcessing.h
+	$(CC) $(WARNING_FLAGS) -c optionsProcessing.c
+
+ProcList.o: ProcList.c ProcList.h
+	$(CC) $(WARNING_FLAGS) -c ProcList.c
+
+parser.o: parser.c parser.h
+	$(CC) $(WARNING_FLAGS) -c parser.c
+
+clean:
+	rm $(EXE) *.o
